@@ -1,6 +1,7 @@
 <?php
 	/*
 		All database interaction should be made through this class.
+		Note: Any function that takes message-id as parameter, must be verified using verifyMessageOwner
 		
 	*/
 	class WPmailerDBhandler

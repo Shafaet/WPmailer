@@ -4,6 +4,9 @@
 <p><font size=6><b>WPmailer</b></font></p>
 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <?php
+	/*
+	 *	This file contains all the features of WPmailer 
+	 */
 	$css_link=plugins_url('/mail_style.css',__FILE__) ;
 	echo "<link rel='stylesheet' type='text/css' href=$css_link />";
 	
@@ -25,7 +28,7 @@
 			$this->buttons->inboxButton();
 			$this->buttons->sentMailButton();
 			$this->buttons->sendNewMessageButton();	
-			if(current_user_can('activate_plugins'))
+			if(current_user_can('activate_plugins')) //Admin area
 			{
 				echo "<div class=WPmailer_admin_area >";
 				echo "<p class=WPmailer_bigbold>Admin options</p>";

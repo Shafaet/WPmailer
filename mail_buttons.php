@@ -1,4 +1,8 @@
 <?php
+	/*
+	 * This file should be used to generate any buttons.
+	 * All database interaction should be done using dbconfig.php
+	 */
 	require_once(dirname(__FILE__) . '/mail_dbconfig.php');
 	class WPmailerButtons
 	{

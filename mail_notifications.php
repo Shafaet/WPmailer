@@ -2,6 +2,7 @@
 	require_once(dirname(__FILE__) . '/mail_dbconfig.php');
 	/*
 		Printing all the notifications and headers should be done through this file.
+		Any interaction with database must be done using dbconfig.php
 	*/
 	function getUnreadMessageNotification()
 	{
