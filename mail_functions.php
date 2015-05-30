@@ -10,4 +10,10 @@
 	{
 		return get_userdata($id)->display_name;
 	}
+	function validateSubject($subject)
+	{
+		if(strlen($subject)==0) return False;
+		if(strlen($subject)>200) return False;
+		return True;
+	}
 ?>

@@ -3,7 +3,7 @@
 	Plugin Name: Shaf WPmail
 	Description: A messaging system for wordpress bloggers
 	Author: Shafaet Ashraf
-	Version: 1.10
+	Version: 0.10
 	Author URI: http://www.shafaetsplanet.com
 	*/
 	/*
@@ -19,12 +19,16 @@
 	You should have received a copy of the GNU General Public License
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 	*/
-	
+
+	/*
+		Warning: This file mustn't output anything, otherwise it may generate header already sent error.
+	*/
 	class ShafWPmailer {
 	
 
 		public function __construct()
 		{
+			add_filter('widget_text','do_shortcode');
 			add_action( 'admin_menu', array($this,'my_plugin_menu') );
 			/* Create Database table */
 			global $wpdb;
@@ -45,6 +49,7 @@
 			sender text NOT NULL,
 			receiver text NULL,
 			read_flag int(10) NULL,
+			broadcast_flag int(10) NULL,
 			sent_mail_flag int(10) NULL,
 			UNIQUE KEY id(id)
 			) $charset_collate;";
@@ -70,7 +75,33 @@
 		}
 		function short_code_func()
 		{
-			return "<p>HEY MAILER!</p>";
+			$css_link=plugins_url('/mail_style.css',__FILE__) ;
+			echo "<link rel='stylesheet' type='text/css' href=$css_link />";
+			
+			/*
+				ISSUE: This is supposed to be done using mail_dbconfig, but including that file is causing warning.
+			*/
+			global $wpdb;
+			$dbtable=$wpdb->prefix.'shaf_WPmailer';
+			$sql="SELECT * FROM $dbtable WHERE sent_mail_flag is NULL AND receiver=".get_current_user_id()." AND read_flag is NULL OR read_flag=0";
+			$table_data = $wpdb->get_results($sql);
+			$unread=count($table_data);
+				
+			$inbox_button="
+			<form action=wp-admin/options-general.php>
+			<input class=btn type=submit value='Inbox($unread)' />
+			<input type=hidden name='inbox' value='true' />
+			<input type=hidden name='page' value='WPmailer' />
+			</form>
+			";
+			
+			return "
+			<form action=wp-admin/options-general.php>
+			<input class=btn type=submit value='WPmailer' />
+			<input type=hidden name='page' value='WPmailer' />
+			</form>
+			".$inbox_button;
+			
 		}
 
 

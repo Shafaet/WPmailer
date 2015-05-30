@@ -17,12 +17,17 @@
 {
   color: green;
   display:inline;
+  
+}
+.pad
+{
+  padding: 0px 15px 0px 0px;
 }
 blockquote
 {
 	background-color: #A8A8A8;
 }
-.wp-editor-container 
+.editor_area .wp-editor-container 
 {
     width:60%; 
 }
@@ -32,7 +37,6 @@ blockquote
   width: 35%;
   color: #FFFFCC;
   font-weight: bold;
-  padding: 2px 0 2px 0;
   margin-left: 2px;
   
   
@@ -43,9 +47,37 @@ blockquote
   width: 35%;
   color: #FFFFCC;
   font-weight: bold;
-  padding: 2px 0 2px 0;
   margin-left: 2px;
+  clear: both;
+}
+.notification_error
+{
+  background-color: #C00000;
+  width: 35%;
+  color: #FFFFCC;
+  font-weight: bold;
+  margin-left: 2px;
+  clear: both;
   
+}
+.WPmailer_admin_area
+{
+  clear: both;
+  padding: 20px 0px 0px 20px;
+}
+.WPmailer_bigbold
+{
+   font-weight: bold;
+   font-size: 20px;
+}
+.WPmailer_admin_area p
+{
+  line-height: 50%;
+}
+.WPmailer_boldinline
+{
+   font-weight: bold;
+   display: inline;
 }
 .notification_message_sent
 {
@@ -54,7 +86,6 @@ blockquote
   margin-left: 2px;
   color: black;
   font-weight: bold;
-  padding: 2px 0 2px 0;
   
 }
 .btn {
@@ -153,7 +184,4 @@ td
   display:inline;
   color: green;
   
-}
-p.small {
-    line-height: 60%;
 }

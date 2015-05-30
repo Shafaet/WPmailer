@@ -11,16 +11,19 @@
 			</form>
 			";
 		}
-		function replyButton($sender_id)
+		function replyButton($sender_id, $sent_mail_flag)
 		{
+			if($sent_mail_flag!=NULL)return;
 			echo "<a href=?page=WPmailer&send_new=true&reply_to_user_id=$sender_id> <button class=btn-small >Reply</button></a>";
 		}
-		function markAsReadButton($id)
+		function markAsReadButton($id, $sent_mail_flag)
 		{
+			if($sent_mail_flag!=NULL)return;
 			echo "<a href='?page=WPmailer&show_message=true&message_id=$id&mark_read=true'><button class=btn-small >Mark as old</button></a>";
 		}
-		function markAsUnreadButton($id)
+		function markAsUnreadButton($id, $sent_mail_flag)
 		{
+			if($sent_mail_flag!=NULL)return;
 			echo "<a href='?page=WPmailer&show_message=true&message_id=$id&mark_unread=true'><button class=btn-small >Mark as unread</button></a>";
 		}
 		function sendNewMessageButton()
@@ -70,6 +73,15 @@
 			</form>
 			";
 	
+		}
+		function deleteButtonInShowMessage($message_id, $sent_mail_flag)
+		{
+		        	
+			$concat_del_outbox="";
+			if($sent_mail_flag!=NULL)
+				$concat_del_outbox='&del_outbox=true';
+			echo "<a href='?page=WPmailer&delete_message=true&message_id=$message_id$concat_del_outbox'><button class=btn-small >Delete</button></a>";
+		
 		}
 	}
 
