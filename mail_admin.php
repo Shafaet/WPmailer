@@ -44,7 +44,6 @@
 		*/
 		function sendNewMessage()
 		{
-			//getUnreadMessageNotification();
 			$this->buttons->getHomeButton();
 			$this->buttons->inboxButton();
 			$this->buttons->sentMailButton();
@@ -171,7 +170,6 @@
 		*/
 		function inbox()
 		{
-			//getUnreadMessageNotification();
 			$this->buttons->getHomeButton();
 			$this->buttons->inboxRefreshButton();
 			$this->buttons->sentMailButton();
@@ -266,6 +264,12 @@
 		
 			
 		}
+		/*
+		 *  Use this function to delete a message using following parameters:
+		 * 		* delete_message=true
+		 * 		* message_id
+		 * 		* del_outbox (optional, used to delete message from outbox) 
+		 */
 		function deleteMessage()
 		{
 			if(isset($_REQUEST['message_id']))
